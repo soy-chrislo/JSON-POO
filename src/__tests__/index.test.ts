@@ -11,3 +11,9 @@ test("create json file", () => {
   const file = directory.createJSONFile("my-file");
   expect(file).toBeInstanceOf(JSONFileUtils);
 });
+
+test("create txt file", () => {
+  const directory = new DirectoryUtils("my-dir", __dirname);
+  const file = directory.createTXTFile("my-file");
+  expect(file).toBeInstanceOf(TXTFileUtils);
+});
