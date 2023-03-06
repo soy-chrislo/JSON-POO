@@ -45,4 +45,4 @@ Entra la duda de como estructurar las entidades:
 // saveEntryEntitie(dataDirectory, entitieFile, {age: 20, address: {street: 'Rua 1', number: 10}})
 // console.log(getEntityContent(entitieFile, dataDirectory));
 
-export { DirectoryUtils, JSONFileUtils, TXTFileUtils };
+export { DirectoryUtils, JSONFileUtils, TXTFileUtils, FileUtils };
