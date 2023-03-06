@@ -1,27 +1,38 @@
 {
   "devDependencies": {
+    "@types/jest": "^29.4.0",
     "@types/node": "^18.14.6",
-    "ts-node": "^10.9.1",
+    "jest": "^29.5.0",
+    "prettier": "^2.8.4",
+    "ts-jest": "^29.0.5",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.9.5"
   },
   "name": "json-utilities",
   "version": "1.0.0",
   "main": "src/index.ts",
-  "dependencies": {
-    "acorn": "^8.8.2",
-    "acorn-walk": "^8.2.0",
-    "arg": "^4.1.3",
-    "create-require": "^1.1.1",
-    "diff": "^4.0.2",
-    "make-error": "^1.3.6",
-    "v8-compile-cache-lib": "^3.0.1",
-    "yn": "^3.1.1"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config jest.config.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
-  "keywords": ["json", "utilities", "library", "poo"],
+  "keywords": [
+    "json",
+    "utilities",
+    "library",
+    "poo"
+  ],
   "author": "soy-chrislo",
   "license": "ISC",
-  "description": "An orientend object library that allows you to create, read, update and delete json files easily."
+  "description": "An orientend object library that allows you to create, read, update and delete json files easily.",
+  "files": [
+    "lib/**/*"
+  ]
 }

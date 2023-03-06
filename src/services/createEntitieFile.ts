@@ -7,6 +7,5 @@ export default function createEntitieFile(entitie: string, directory: string) {
   const entitieFile = path.join(process.cwd(), directory, `${entitie}.json`);
   if (!fs.existsSync(entitieFile)) {
     fs.writeFileSync(entitieFile, '[]');
-    console.log(`Created ${entitie} file at ${entitieFile}`);
   }
 }

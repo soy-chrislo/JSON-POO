@@ -1,27 +1,26 @@
-import { DirectoryUtils } from "./DirectoryUtils";
-import { fileTypes } from "./Utils";
+import { DirectoryUtils } from './DirectoryUtils';
+import { fileTypes } from './Utils';
 
 export abstract class FileUtils {
   #name: string;
   #extension: fileTypes;
   #filePath: string;
   #workingDirectory: DirectoryUtils;
-  
 
   constructor(name: string, extension: fileTypes, workingDirectory: DirectoryUtils) {
     this.#name = name;
     this.#extension = extension;
     this.#workingDirectory = workingDirectory;
-    this.#filePath = `${this.#workingDirectory.directoryPath}/${this.#name}.${this.#extension}`
+    this.#filePath = `${this.#workingDirectory.directoryPath}/${this.#name}.${this.#extension}`;
   }
 
   createFile(): void {
-    const fs = require('fs')
+    const fs = require('fs');
 
     const file = this.#filePath;
 
     if (!fs.existsSync(file)) {
-      fs.writeFileSync(file, '', 'utf-8')
+      fs.writeFileSync(file, '', 'utf-8');
     }
   }
 
@@ -29,38 +28,37 @@ export abstract class FileUtils {
     const fs = require('fs');
     fs.unlink(this.#filePath, (err: any) => {
       if (err) {
-        console.error(err)
-        return
+        // console.error(err)
+        return;
       }
-      console.log(`File ${this.#filePath} has been deleted`);
-    })
+      // console.log(`File ${this.#filePath} has been deleted`);
+    });
   }
 
   // ! CRUD Content
   abstract createContent(): void;
 
   abstract readContent(): void;
-  
+
   abstract updateContent(): void;
-  
+
   abstract deleteContent(): void;
 
   // ! Getters & Setters
 
-  get name(): string{
+  get name(): string {
     return this.#name;
   }
 
-  get extension(): string{
+  get extension(): string {
     return this.#extension;
   }
-  
-  get filePath(): string{
+
+  get filePath(): string {
     return this.#filePath;
   }
 
-  get workingDirectory(): DirectoryUtils{
+  get workingDirectory(): DirectoryUtils {
     return this.#workingDirectory;
   }
-
 }

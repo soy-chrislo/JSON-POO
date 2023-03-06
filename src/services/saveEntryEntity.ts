@@ -6,7 +6,7 @@ export default function saveEntryEntitie(directory: string, entity: string, data
   const entityFile: string = getEntityFile(entity, directory);
   const entityContent: object = getEntityContent(entity, directory);
 
-  const newEntity = {...entityContent, ...data}
+  const newEntity = { ...entityContent, ...data };
 
   const parseNewEntity = JSON.stringify(newEntity);
 
