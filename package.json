@@ -13,7 +13,7 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {
-    "test": "jest --config jest.config.json",
+    "test": "rm -rf ./lib && npm run build && jest --config jest.config.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
